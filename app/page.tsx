@@ -1,29 +1,29 @@
+"use client";
+import { useState, useRef, useEffect } from "react";
 export default function Page(){
- return (
-  <main style={{maxWidth:800,margin:"0 auto",padding:24,lineHeight:1.9,fontFamily:"system-ui"}}>
-   <h1 style={{fontSize:32}}>SindhiGPT - سنڌي GPT | سنڌي ۾ ڳالهائيندڙ AI</h1>
-   <p><b>SindhiGPT</b> دنيا جو پهريون <b>سنڌي AI</b> آهي. هي <b>Sindhi Tau - سنڌي تائو</b> جي نالي سان مشهور آهي. 4 ڪروڙ سنڌي ڳالهائيندڙن لاءِ ٺاهيل.</p>
-   
-   <h2>سنڌي GPT ڇا ڪري سگهي ٿو؟</h2>
-   <ul>
-    <li>سنڌي شاعري: شاه لطيف، سچل، سامي جي شاعري</li>
-    <li>سنڌ جي تاريخ، ثقافت، ۽ جاگرافي</li>
-    <li>سنڌي کان انگريزي ۽ انگريزي کان سنڌي ترجمو</li>
-    <li>سنڌي گرامر ۽ خط</li>
-    <li>روزمره جا سوال - خالص سنڌي ۾ جواب</li>
-   </ul>
-
-   <h2>What is SindhiGPT?</h2>
-   <p>SindhiGPT is the world's first Sindhi AI Chat. Like ChatGPT but for Sindhi language. Ask in Sindhi, get answers in Sindhi. Best alternative for Sindhi ChatGPT. Also known as Sindhi Tau.</p>
-   
-   <h2>سنڌي تائو - Sindhi Tau</h2>
-   <p>سنڌي تائو توهان جو پنهنجو AI دوست آهي جيڪو توهان کي سنڌي ثقافت، ٻولي ۽ روايتن بابت ڄاڻ ڏيندو.</p>
-
-   <div style={{marginTop:32,background:"#e0f2fe",padding:16,borderRadius:12,border:"1px solid #7dd3fc"}}>
-    <b>نوٽ:</b> جلد ئي هتي Chat جو آپشن ايندو! هن وقت اسان جو SEO Setup مڪمل ٿي رهيو آهي ته جيئن Google ۾ Top تي اچي.
-   </div>
-   
-   <footer style={{marginTop:48,borderTop:"1px solid #ddd",paddingTop:12,fontSize:14}}>© 2026 SindhiGPT - Sindhi Tau | sindhigpt.vercel.app</footer>
-  </main>
- )
+  const [msgs,setMsgs]=useState([{role:"bot",text:"السلام عليڪم! مان سنڌي GPT آهيان - سنڌي جو پهريون AI دوست! 🙏"}]);
+  const [input,setInput]=useState(""); const [loading,setLoading]=useState(false);
+  const ref=useRef(null);
+  useEffect(()=>{ref.current?.scrollTo(0,ref.current.scrollHeight)},[msgs,loading]);
+  async function send(){
+    if(!input.trim()||loading) return; const q=input.trim(); setMsgs(m=>[...m,{role:"user",text:q}]); setInput(""); setLoading(true);
+    try{
+      const r=await fetch("https://text.pollinations.ai/"+encodeURIComponent("You must reply ONLY in Sindhi Arabic script. User: "+q)+"?model=openai");
+      let t=await r.text(); if(!t||t.length<2) throw Error(); setMsgs(m=>[...m,{role:"bot",text:t.trim()}]);
+    }catch{ setMsgs(m=>[...m,{role:"bot",text:"معاف ڪجو سرور مصروف آهي. سچن تندولڪر 100 سينچرين سان ڪرڪيٽ جو ڀڳوان آهي! 🏏"}]);}
+    setLoading(false);
+  }
+  return(
+    <main style={{maxWidth:800,margin:"0 auto",padding:16,fontFamily:"system-ui"}}>
+      <h1 style={{textAlign:"center",fontSize:26}}>SindhiGPT - سنڌي GPT 🤖</h1>
+      <div ref={ref} style={{border:"1px solid #ddd",borderRadius:12,height:"62vh",overflowY:"auto",padding:12,background:"#fafafa",marginTop:12}}>
+        {msgs.map((m,i)=><div key={i} style={{textAlign:m.role==="user"?"right":"left",margin:"8px 0"}}><span style={{background:m.role==="user"?"#0070f3":"#fff",color:m.role==="user"?"#fff":"#111",padding:"10px 14px",borderRadius:14,display:"inline-block",maxWidth:"85%",border:"1px solid #eee"}}>{m.text}</span></div>)}
+        {loading&&<div style={{fontSize:13,color:"#888"}}>لکي رهيو آهيان...</div>}
+      </div>
+      <div style={{display:"flex",gap:8,marginTop:12}}>
+        <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&send()} placeholder="سنڌي ۾ لکو..." style={{flex:1,padding:13,borderRadius:10,border:"1px solid #ccc"}}/>
+        <button onClick={send} style={{padding:"13px 18px",background:"#0070f3",color:"#fff",border:"none",borderRadius:10}}>موڪليو</button>
+      </div>
+    </main>
+  );
 }
