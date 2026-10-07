@@ -1,57 +1,101 @@
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();
-    
-    // 1. Live Karachi Time
-    const karachiTime = new Date().toLocaleString('sd-PK', {
-      timeZone: 'Asia/Karachi',
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
+
+    if (!message || typeof message !== "string") {
+      return Response.json(
+        { reply: "مهرباني ڪري سوال لکو." },
+        { status: 400 }
+      );
+    }
+
+    // پاڪستان جو موجوده وقت
+    const karachiTime = new Date().toLocaleString("sd-PK", {
+      timeZone: "Asia/Karachi",
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
       hour12: true,
     });
 
-    const lower = message.toLowerCase();
-    if (lower.includes('وقت') || lower.includes('وڳي') || lower.includes('time') || lower.includes('ٽائيم')) {
-      return Response.json({ reply: `هن وقت پاڪستان ۾ لائيو ٽائيم آهي:\n\n**${karachiTime}**\n\n(PKT - Asia/Karachi) - هي Live سرور ٽائيم آهي.` });
+    const apiKey = process.env.POLLINATIONS_API_KEY;
+
+    if (!apiKey) {
+      return Response.json({
+        reply:
+          "معاف ڪجو، AI API Key سيٽ ناهي. مهرباني ڪري Vercel ۾ POLLINATIONS_API_KEY شامل ڪريو.",
+      });
     }
 
-    // 2. Live Internet Search
-    let liveInfo = "";
-    try {
-      const searchUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(message)}&format=json&no_html=1&skip_disambig=1`;
-      const searchRes = await fetch(searchUrl);
-      const searchData = await searchRes.json();
-      if (searchData.AbstractText) {
-        liveInfo = `Live Internet Result: ${searchData.AbstractText}`;
-      } else if (searchData.RelatedTopics && searchData.RelatedTopics[0]) {
-        liveInfo = `Live Internet Result: ${searchData.RelatedTopics[0].Text || ''}`;
+    const systemPrompt = `
+تون سنڌي GPT آهين.
+
+هميشه سنڌي عربي رسم الخط ۾ جواب ڏي.
+
+اهم هدايت:
+- جيڪڏهن سوال تازين خبرن، ڪرڪيٽ، راندين، موسم، سون جي اگهه، موجوده واقعن، سياست يا ڪنهن به تازي معلومات بابت هجي ته ويب سرچ ذريعي موجوده معلومات ڳول.
+- پراڻي يا اندازي واري معلومات کي Live معلومات طور پيش نه ڪر.
+- جيڪڏهن ويب سرچ مان معلومات نه ملي ته صاف ٻڌاءِ ته تازو نتيجو حاصل نه ٿي سگهيو.
+- موجوده پاڪستاني وقت لاءِ هي وقت استعمال ڪر:
+${karachiTime}
+
+مختصر، صحيح ۽ صاف سنڌي ۾ جواب ڏي.
+`;
+
+    const response = await fetch(
+      "https://gen.pollinations.ai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "perplexity/sonar",
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            {
+              role: "user",
+              content: message,
+            },
+          ],
+        }),
       }
-    } catch (e) {
-      liveInfo = "";
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+
+      console.error("Pollinations Error:", errorText);
+
+      return Response.json({
+        reply:
+          "معاف ڪجو، Live AI سروس هن وقت جواب نٿي ڏئي. ٿوري دير کان پوءِ ٻيهر ڪوشش ڪريو.",
+      });
     }
 
-    // 3. AI Prompt with Live Data
-    const nowForAI = new Date().toLocaleString('en-US', { timeZone: 'Asia/Karachi' });
-    const prompt = `
-    Current LIVE time in Karachi Pakistan is: ${karachiTime} / ${nowForAI}
-    ${liveInfo ? `Current LIVE internet search info about user query is: ${liveInfo}` : ''}
-    
-    You are SindhiGPT. You must reply ONLY in Sindhi Arabic script.
-    Use the LIVE time and LIVE internet info above to answer.
-    If user asks about news, gold price, weather, etc, use the LIVE info.
-    User question: ${message}
-    `;
+    const data = await response.json();
 
-    const r = await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=openai&nocache=${Date.now()}`);
-    const text = await r.text();
-    return Response.json({ reply: text });
+    const reply =
+      data?.choices?.[0]?.message?.content ||
+      "معاف ڪجو، مون کي هن سوال جو جواب حاصل نه ٿي سگهيو.";
 
-  } catch (err) {
-    return Response.json({ reply: "معاف ڪجو، Live ڪنيڪشن ۾ مسئلو ٿيو، وري ڪوشش ڪريو!" });
+    return Response.json({
+      reply,
+    });
+  } catch (error) {
+    console.error("Chat API Error:", error);
+
+    return Response.json({
+      reply:
+        "معاف ڪجو، Live ڪنيڪشن ۾ مسئلو ٿيو. مهرباني ڪري ٻيهر ڪوشش ڪريو.",
+    });
   }
 }
