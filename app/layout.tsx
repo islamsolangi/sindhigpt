@@ -23,6 +23,7 @@ return(
 <html lang="sd" dir="rtl">
 <head>
 <meta name="monetag" content="1b861edf7e6a08817f4c6c72324d7c32" />
+<script src="https://quge5.com/88/tag.min.js" data-zone="292133" async data-cfasync="false"></script>
 </head>
 <body style={{margin:0,fontFamily:"system-ui"}}>
 {children}
