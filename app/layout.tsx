@@ -14,11 +14,6 @@ locale: "sd_PK",
 type: "website",
 },
 robots: "index, follow",
-verification: {
-  other: {
-    "monetag": "1b861edf7e6a08817f4c6c72324d7c32",
-  },
-},
 };
 
 export default function RootLayout(
@@ -26,6 +21,9 @@ export default function RootLayout(
 ){
 return(
 <html lang="sd" dir="rtl">
+<head>
+<meta name="monetag" content="1b861edf7e6a08817f4c6c72324d7c32" />
+</head>
 <body style={{margin:0,fontFamily:"system-ui"}}>
 {children}
 </body>
