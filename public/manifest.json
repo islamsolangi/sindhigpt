@@ -1,0 +1,16 @@
+{
+  "name": "SindhiGPT - مصنوعي ذهانت",
+  "short_name": "SindhiGPT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "description": "سنڌي ٻولي جو پهريون AI چيٽ بوٽ",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/4712/4712109.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
