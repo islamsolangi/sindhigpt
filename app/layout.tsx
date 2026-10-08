@@ -25,6 +25,10 @@ export default function RootLayout({
     <html lang="sd" dir="rtl">
       <head>
         <meta name="monetag" content="1b861ed6bb7d53f1f7d2a4d1f7c1b9a" />
+        {/* PWA Install لاءِ */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" />
       </head>
       <body style={{ margin: 0, fontFamily: "system-ui, Noto Nastaliq Urdu, sans-serif", background: "#f5f5f5" }}>
         {children}
