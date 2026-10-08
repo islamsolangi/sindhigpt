@@ -14,6 +14,11 @@ locale: "sd_PK",
 type: "website",
 },
 robots: "index, follow",
+verification: {
+  other: {
+    "monetag": "1b861edf7e6a08817f4c6c72324d7c32",
+  },
+},
 };
 
 export default function RootLayout(
