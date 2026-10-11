@@ -1,41 +1,43 @@
-import { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function POST(req: NextRequest) {
-  const { message } = await req.json()
+export async function POST(req: Request) {
+  try {
+    const { message } = await req.json()
 
-  const systemPrompt = `
-  You are SindhiGPT - a friendly Sindhi assistant.
-  RULES - MUST FOLLOW:
-    1. Reply ONLY in Sindhi (Arabic script).
-    2. NEVER use markdown tables, never use | --- | symbols.
-    3. NEVER use HTML tags like <br>.
-    4. NEVER use ** or ## or ###.
-    5. Use only simple paragraphs, 2-3 lines.
-    6. If you don't know live cricket score, say in Sindhi: "معاف ڪجو، مون وٽ هن وقت تازو لائيو اسڪور موجود ناهي، مهرباني ڪري ڪرڪ انفو چيڪ ڪريو" - DO NOT make fake scores.
-    6. Be helpful, short, and clear.
-  `
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({ reply: "API Key جو مسئلو آهي" }, { status: 500 })
+    }
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-    },
-    body: JSON.stringify({
-      model: 'gpt-4o-mini',
-      temperature: 0.3,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: message }
-      ]
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: "You are SindhiGPT. Reply only in Sindhi Arabic script. Never use tables, |, <br>, **. Keep answers short and clean. If you don't know live score, say you don't have live data." },
+          { role: "user", content: message }
+        ],
+        temperature: 0.3
+      })
     })
-  })
 
-  const data = await response.json()
-  let reply = data.choices[0].message.content
+    const data = await res.json()
 
-  // صفائي - ٽٽل نشان ختم ڪرڻ لاءِ
-  reply = reply.replace(/<br>/g, '').replace(/\|/g, '').replace(/\*\*/g, '').replace(/###/g, '')
+    if (!data.choices) {
+      console.log("OpenAI Error:", data)
+      return NextResponse.json({ reply: "اوپن اي آءِ ۾ مسئلو: " + (data.error?.message || "نامعلوم") })
+    }
 
-  return Response.json({ reply })
+    let reply = data.choices[0].message.content
+    reply = reply.replace(/<br>/g, "").replace(/\|/g, " ")
+
+    return NextResponse.json({ reply })
+
+  } catch (e: any) {
+    console.log("Server Error:", e)
+    return NextResponse.json({ reply: "سرور ۾ مسئلو: " + e.message }, { status: 500 })
+  }
 }
