@@ -1,41 +1,41 @@
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+import { NextRequest } from 'next/server'
 
-export async function POST(req: Request) {
-  try {
-    const { message } = await req.json();
-    if (!message) return Response.json({ reply: "سوال لکو!" });
+export async function POST(req: NextRequest) {
+  const { message } = await req.json()
 
-    // صرف وقت Live - باقي سڀ Unlimited AI
-    const lower = message.toLowerCase();
-    if (lower.includes('وقت') || lower.includes('time') || lower.includes('ٽائيم') || lower.includes('تاريخ')) {
-      const now = new Date().toLocaleString('en-PK', { timeZone: 'Asia/Karachi', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true, weekday:'long', year:'numeric', month:'long', day:'numeric' });
-      return Response.json({ reply: `⏰ هاڻي وقت: ${now} (Live)` });
-    }
+  const systemPrompt = `
+  You are SindhiGPT - a friendly Sindhi assistant.
+  RULES - MUST FOLLOW:
+    1. Reply ONLY in Sindhi (Arabic script).
+    2. NEVER use markdown tables, never use | --- | symbols.
+    3. NEVER use HTML tags like <br>.
+    4. NEVER use ** or ## or ###.
+    5. Use only simple paragraphs, 2-3 lines.
+    6. If you don't know live cricket score, say in Sindhi: "معاف ڪجو، مون وٽ هن وقت تازو لائيو اسڪور موجود ناهي، مهرباني ڪري ڪرڪ انفو چيڪ ڪريو" - DO NOT make fake scores.
+    6. Be helpful, short, and clear.
+  `
 
-    // Unlimited AI - ڪوبه سوال، ڪابه حد نه
-    const response = await fetch('https://text.pollinations.ai/openai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'openai',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are SindhiGPT - a helpful AI assistant. Answer in Sindhi language (سنڌي). You can answer ANY question - unlimited knowledge. Be direct, helpful and friendly.'
-          },
-          { role: 'user', content: message }
-        ],
-        stream: false
-      })
-    });
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      temperature: 0.3,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: message }
+      ]
+    })
+  })
 
-    const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || "معاف ڪجو، ٻيهر ڪوشش ڪريو!";
+  const data = await response.json()
+  let reply = data.choices[0].message.content
 
-    return Response.json({ reply });
+  // صفائي - ٽٽل نشان ختم ڪرڻ لاءِ
+  reply = reply.replace(/<br>/g, '').replace(/\|/g, '').replace(/\*\*/g, '').replace(/###/g, '')
 
-  } catch (e) {
-    return Response.json({ reply: "Error آيو، ٻيهر ڪوشش ڪريو!" });
-  }
+  return Response.json({ reply })
 }
