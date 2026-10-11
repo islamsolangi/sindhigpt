@@ -35,9 +35,10 @@ export default function Home() {
 
   return (
     <main style={{ maxWidth: "700px", margin: "0 auto", minHeight: "100vh", background: "white", display: "flex", flexDirection: "column", direction: "rtl" }}>
-      {/* Header - پراڻي ڊيزائن - جيئن توهان جي تصوير ۾ */}
+
+      {/* Header - بلاگ بٽڻ هاڻي ٺيڪ آهي */}
       <header style={{ background: "#2563eb", color: "white", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 10 }}>
-        <div style={{ background: "rgba(255,255,255,0.2)", padding: "6px 14px", borderRadius: "20px", fontSize: "14px" }}>📚 بلاگ</div>
+        <a href="/blog" style={{ background: "rgba(255,255,255,0.2)", padding: "6px 14px", borderRadius: "20px", fontSize: "14px", color: "white", textDecoration: "none" }}>📚 بلاگ</a>
         <h1 style={{ margin: 0, fontSize: "18px", fontWeight: "bold" }}>سنڌي GPT - مصنوعي ذهانت</h1>
       </header>
 
@@ -63,7 +64,7 @@ export default function Home() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input - پراڻي ڊيزائن */}
+      {/* Input */}
       <div style={{ padding: "12px 16px", background: "white", borderTop: "1px solid #e5e7eb", display: "flex", gap: "10px", position: "sticky", bottom: 0 }}>
         <input
           value={input}
