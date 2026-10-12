@@ -18,34 +18,44 @@ export default function Home() {
       const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: userText }) });
       const data = await res.json();
       setMessages(m => [...m, { role: "bot", text: data.reply || "جواب نه مليو!" }]);
-    } catch { setMessages(m => [...m, { role: "bot", text: "انٽرنيٽ ۾ مسئلو، ٻيهر ڪوشش ڪريو!" }]); }
+    } catch { setMessages(m => [...m, { role: "bot", text: "انٽرنيٽ ۾ مسئلو!" }]); }
     setLoading(false);
   }
   return (
-    <main style={{ maxWidth: "700px", margin: "0 auto", minHeight: "100vh", background: "white", display: "flex", flexDirection: "column", direction: "rtl" }}>
-      <header style={{ background: "#2563eb", color: "white", padding: "14px 12px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 20, direction: "ltr" }}>
+    <div style={{ minHeight: "100vh", background: "#f3f4f6", display: "flex", flexDirection: "column", direction: "rtl" }}>
+      <header style={{ background: "#2563eb", color: "white", padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 20, direction: "ltr", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>
         <div style={{ position: "relative" }}>
-          <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "rgba(255,255,255,0.25)", border: "none", width: "38px", height: "38px", borderRadius: "50%", fontSize: "22px", color: "white", cursor: "pointer" }}>⋮</button>
+          <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "rgba(255,255,255,0.2)", border: "none", width: "42px", height: "42px", borderRadius: "50%", fontSize: "22px", color: "white", cursor: "pointer" }}>⋮</button>
           {menuOpen && (
-            <div style={{ position: "absolute", top: "45px", left: 0, background: "white", borderRadius: "12px", boxShadow: "0 8px 25px rgba(0,0,0,0.2)", minWidth: "170px", overflow: "hidden", zIndex: 50, border: "1px solid #e2e8f0", direction: "rtl" }}>
-              <a href="/about" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "13px 16px", color: "#1e293b", textDecoration: "none", borderBottom: "1px solid #f1f5f9" }}>👤 اسان بابت</a>
-              <a href="/privacy" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "13px 16px", color: "#1e293b", textDecoration: "none", borderBottom: "1px solid #f1f5f9" }}>🔒 پرائيويسي</a>
-              <a href="/contact" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "13px 16px", color: "#1e293b", textDecoration: "none" }}>📞 رابطو</a>
+            <div style={{ position: "absolute", top: "48px", left: 0, background: "white", borderRadius: "14px", boxShadow: "0 10px 30px rgba(0,0,0,0.2)", minWidth: "180px", overflow: "hidden", zIndex: 50, border: "1px solid #e2e8f0", direction: "rtl" }}>
+              <a href="/about" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "14px 16px", color: "#1e293b", textDecoration: "none", borderBottom: "1px solid #f1f5f9" }}>👤 اسان بابت</a>
+              <a href="/privacy" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "14px 16px", color: "#1e293b", textDecoration: "none", borderBottom: "1px solid #f1f5f9" }}>🔒 پرائيويسي پاليسي</a>
+              <a href="/contact" onClick={()=>setMenuOpen(false)} style={{ display: "block", padding: "14px 16px", color: "#1e293b", textDecoration: "none" }}>📞 رابطو ڪريو</a>
             </div>
           )}
         </div>
-        <h1 style={{ margin: 0, fontSize: "17px", fontWeight: "bold", flex: 1, textAlign: "center", direction: "rtl" }}>سنڌي GPT - مصنوعي ذهانت</h1>
-        <a href="/blog" style={{ background: "rgba(255,255,255,0.25)", padding: "6px 14px", borderRadius: "20px", fontSize: "14px", color: "white", textDecoration: "none", fontWeight: "bold", direction: "rtl" }}>📚 بلاگ</a>
+
+        {/* وچ ۾ ٽن لائينن وارو ٽائيٽل - توهان جي گهر مطابق */}
+        <div style={{ flex: 1, textAlign: "center", direction: "rtl", lineHeight: "1.3" }}>
+          <div style={{ fontSize: "19px", fontWeight: "bold", letterSpacing: "0.5px" }}>سنڌي GPT</div>
+          <div style={{ fontSize: "13px", fontWeight: "600", opacity: 0.95 }}>مصنوعي ذهانت</div>
+          <div style={{ fontSize: "11px", opacity: 0.85, marginTop: "2px" }}>پهريون سنڌي چيٽ بوٽ ٽول</div>
+        </div>
+
+        <a href="/blog" style={{ background: "white", padding: "7px 16px", borderRadius: "20px", fontSize: "14px", color: "#2563eb", textDecoration: "none", fontWeight: "bold", direction: "rtl", boxShadow: "0 1px 3px rgba(0,0,0,0.2)" }}>📚 بلاگ</a>
       </header>
-      <div style={{ flex: 1, padding: "16px", display: "flex", flexDirection: "column", gap: "16px", background: "#f9fafb", overflowY: "auto" }}>
-        {messages.map((m, i) => (<div key={i} style={{ alignSelf: m.role === "user"? "flex-start" : "flex-end", background: m.role === "user"? "#2563eb" : "#e5e7eb", color: m.role === "user"? "white" : "black", padding: "14px 18px", borderRadius: m.role === "user"? "20px 20px 20px 4px" : "20px 20px 4px 20px", maxWidth: "85%", lineHeight: "1.8", fontSize: "16px", whiteSpace: "pre-wrap" }}>{m.text}</div>))}
-        {loading && <div style={{ alignSelf: "flex-end", background: "#e5e7eb", padding: "12px 18px", borderRadius: "20px", fontSize: "14px" }}>لکي رهيو آهي...</div>}
-        <div ref={bottomRef} />
-      </div>
-      <div style={{ padding: "12px 16px", background: "white", borderTop: "1px solid #e5e7eb", display: "flex", gap: "10px", position: "sticky", bottom: 0 }}>
-        <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder="هتي لکو..." style={{ flex: 1, border: "1.5px solid #d1d5db", borderRadius: "24px", padding: "12px 18px", fontSize: "16px", outline: "none", textAlign: "right" }} />
-        <button onClick={send} disabled={loading} style={{ background: "#2563eb", color: "white", border: "none", padding: "12px 22px", borderRadius: "24px", fontSize: "15px", fontWeight: "bold", cursor: "pointer" }}>موڪليو</button>
-      </div>
-    </main>
+
+      <main style={{ maxWidth: "700px", margin: "0 auto", width: "100%", flex: 1, background: "white", display: "flex", flexDirection: "column", boxShadow: "0 0 20px rgba(0,0,0,0.05)" }}>
+        <div style={{ flex: 1, padding: "16px", display: "flex", flexDirection: "column", gap: "16px", background: "#f9fafb", overflowY: "auto" }}>
+          {messages.map((m, i) => (<div key={i} style={{ alignSelf: m.role === "user"? "flex-start" : "flex-end", background: m.role === "user"? "#2563eb" : "white", color: m.role === "user"? "white" : "#111", padding: "14px 18px", borderRadius: m.role === "user"? "20px 20px 20px 4px" : "20px 20px 4px 20px", maxWidth: "85%", lineHeight: "1.8", fontSize: "16px", whiteSpace: "pre-wrap", boxShadow: "0 1px 3px rgba(0,0,0,0.08)", border: m.role === "bot"? "1px solid #e5e7eb" : "none" }}>{m.text}</div>))}
+          {loading && <div style={{ alignSelf: "flex-end", background: "white", padding: "12px 18px", borderRadius: "20px", fontSize: "14px", border: "1px solid #e5e7eb" }}>لکي رهيو آهي...</div>}
+          <div ref={bottomRef} />
+        </div>
+        <div style={{ padding: "12px 14px", background: "white", borderTop: "1px solid #e5e7eb", display: "flex", gap: "10px", position: "sticky", bottom: 0 }}>
+          <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder="هتي لکو..." style={{ flex: 1, border: "1.5px solid #d1d5db", borderRadius: "28px", padding: "13px 20px", fontSize: "16px", outline: "none", textAlign: "right" }} />
+          <button onClick={send} disabled={loading} style={{ background: "#2563eb", color: "white", border: "none", padding: "13px 24px", borderRadius: "28px", fontSize: "15px", fontWeight: "bold", cursor: "pointer" }}>موڪليو</button>
+        </div>
+      </main>
+    </div>
   );
 }
