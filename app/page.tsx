@@ -240,7 +240,7 @@ return (
           maxWidth: "54%",
         }}
       >
-        <a href="/app/app/books" style={{ ...headerButton, background: "white", color: "#2563eb" }}>
+        <a href="/app/books" style={{ ...headerButton, background: "white", color: "#2563eb" }}>
           📚 ڪتاب
         </a>
 
