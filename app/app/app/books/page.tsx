@@ -43,7 +43,7 @@ export default function BooksPage() {
       style={{
         minHeight: "100vh",
         padding: "20px 14px",
-        background: "#f0fdf4",
+        background: "linear-gradient(180deg, #ecfdf5 0%, #f8fafc 100%)",
         fontFamily: "inherit",
       }}
     >
@@ -53,31 +53,35 @@ export default function BooksPage() {
           margin: "0 auto",
           background: "white",
           borderRadius: "20px",
-          padding: "20px 16px",
-          boxShadow: "0 5px 20px rgba(0,0,0,0.08)",
+          padding: "22px 16px",
+          boxShadow: "0 8px 28px rgba(0,0,0,0.08)",
+          border: "1px solid #d1fae5",
         }}
       >
-        <h1
-          style={{
-            textAlign: "center",
-            color: "#075e45",
-            fontSize: "25px",
-            margin: "4px 0 8px",
-          }}
-        >
-          📚 شاهه جو رسالو
-        </h1>
+        <div style={{ textAlign: "center", marginBottom: "22px" }}>
+          <div style={{ fontSize: "42px" }}>📚</div>
 
-        <p
-          style={{
-            textAlign: "center",
-            color: "#475569",
-            lineHeight: 1.9,
-            marginBottom: "22px",
-          }}
-        >
-          شاهه عبداللطيف ڀٽائيءَ جي رسالي جا موجود سُر پڙهڻ لاءِ چونڊيو.
-        </p>
+          <h1
+            style={{
+              color: "#075e45",
+              fontSize: "27px",
+              margin: "8px 0",
+            }}
+          >
+            شاهه جو رسالو
+          </h1>
+
+          <p
+            style={{
+              color: "#475569",
+              lineHeight: 1.9,
+              fontSize: "15px",
+              margin: 0,
+            }}
+          >
+            حضرت شاهه عبداللطيف ڀٽائيءَ جي رسالي جا سُر پڙهڻ لاءِ چونڊيو.
+          </p>
+        </div>
 
         <div style={{ display: "grid", gap: "12px" }}>
           {surs.map((sur, index) => (
@@ -86,11 +90,12 @@ export default function BooksPage() {
               href={sur.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${sur.name} پڙهو`}
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "12px",
-                padding: "16px 14px",
+                padding: "14px",
                 border: "1px solid #bbf7d0",
                 borderRadius: "14px",
                 background: "#f8fffb",
@@ -98,14 +103,15 @@ export default function BooksPage() {
                 textDecoration: "none",
                 fontSize: "17px",
                 fontWeight: "bold",
+                minHeight: "64px",
               }}
             >
               <span
                 style={{
                   background: "#075e45",
                   color: "white",
-                  width: "36px",
-                  height: "36px",
+                  width: "38px",
+                  height: "38px",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -117,9 +123,16 @@ export default function BooksPage() {
                 {index + 1}
               </span>
 
-              <span>{sur.name}</span>
+              <span style={{ flex: 1 }}>{sur.name}</span>
 
-              <span style={{ marginRight: "auto" }}>❯</span>
+              <span
+                style={{
+                  color: "#16a34a",
+                  fontSize: "20px",
+                }}
+              >
+                ❮
+              </span>
             </a>
           ))}
         </div>
@@ -130,16 +143,29 @@ export default function BooksPage() {
             display: "block",
             textAlign: "center",
             marginTop: "24px",
-            padding: "13px",
-            borderRadius: "12px",
+            padding: "14px",
+            borderRadius: "14px",
             background: "#075e45",
             color: "white",
             textDecoration: "none",
             fontWeight: "bold",
+            fontSize: "16px",
           }}
         >
-          واپس سنڌي GPT ڏانهن
+          🏠 واپس سنڌي GPT ڏانهن
         </a>
+
+        <p
+          style={{
+            textAlign: "center",
+            color: "#64748b",
+            fontSize: "12px",
+            marginTop: "18px",
+            marginBottom: 0,
+          }}
+        >
+          سنڌي ٻولي، ادب ۽ ثقافت سان محبت
+        </p>
       </div>
     </main>
   );
