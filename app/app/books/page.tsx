@@ -80,7 +80,7 @@ const books = [
     title: "پهاڪا چوڻيون - سنڌي پهاڪا",
     description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو - Blogger تي",
     icon: "💬",
-    href: "https://islamsolangi786.blogspot.com/search?q=پهاڪا+چوڻيون",
+    href: "https://islamsolangi786.blogspot.com/2026/10/pahaka-chooniyan-sindhi-proverbs-online.html",
     ready: true,
   },
   {
