@@ -1,6 +1,41 @@
 
 "use client";
 
+import { useState } from "react";
+
+const sachalSections = [
+  {
+    title: "سچل سرمست جون ڪافيون",
+    description: "15 مشهور ڪافيون ۽ سنڌي تشريح",
+    icon: "🎼",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-kafis-tashreeh-15-famous-sindhi-kafi.html",
+  },
+  {
+    title: "سچل جي هون پڇوڙي",
+    description: "ڪافي ۽ ان جي تشريح",
+    icon: "💚",
+    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-ji-hon-pachori.html",
+  },
+  {
+    title: "ڪافيون ۽ سنڌي معنيٰ",
+    description: "ڪافين جو مجموعو ۽ آسان سنڌي معنيٰ",
+    icon: "📖",
+    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-kafi-sindhi-meaning.html",
+  },
+  {
+    title: "سچل سرمست جا 40 بيت",
+    description: "بيت، تشريح ۽ وحدت الوجود جو فڪر",
+    icon: "✍️",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-bait-40-tashreeh-wahdat-ul-wajud-sindhi.html",
+  },
+  {
+    title: "سچل سرمست جا 100 بيت",
+    description: "بيت ۽ انهن جي سنڌي معنيٰ",
+    icon: "📚",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-100-baith-with-meaning.html",
+  },
+];
+
 const books = [
   {
     title: "شاهه جو رسالو",
@@ -11,43 +46,11 @@ const books = [
     ready: true,
   },
   {
-    title: "سچل سرمست جي ڪافي",
-    description: "سچل سائينءَ جون ڪافيون ۽ آسان سنڌي معنيٰ",
-    icon: "🎼",
-    category: "صوفيانه شاعري",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-kafis-tashreeh-15-famous-sindhi-kafi.html",
-    ready: true,
-  },
-  {
-    title: "سچل سرمست: جي هون پڇوڙي",
-    description: "ڪافي ۽ ان جي تشريح",
-    icon: "💚",
-    category: "صوفيانه شاعري",
-    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-ji-hon-pachori.html",
-    ready: true,
-  },
-  {
-    title: "سچل سرمست جون ڪافيون ۽ سنڌي معنيٰ",
-    description: "ڪافين جو مجموعو ۽ سنڌي تشريح",
+    title: "سچل سرمست جو رسالو",
+    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا حصا",
     icon: "📖",
-    category: "ڪلاسيڪي ادب",
-    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-kafi-sindhi-meaning.html",
-    ready: true,
-  },
-  {
-    title: "سچل سرمست جا 40 بيت",
-    description: "بيت، تشريح ۽ وحدت الوجود جو فڪر",
-    icon: "✍️",
-    category: "سنڌي شاعري",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-bait-40-tashreeh-wahdat-ul-wajud-sindhi.html",
-    ready: true,
-  },
-  {
-    title: "سچل سرمست جا 100 بيت",
-    description: "سچل سائينءَ جا بيت ۽ انهن جي معنيٰ",
-    icon: "📚",
     category: "صوفيانه ادب",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-100-baith-with-meaning.html",
+    type: "sachal",
     ready: true,
   },
   {
@@ -102,17 +105,31 @@ const books = [
 ];
 
 export default function BooksLibraryPage() {
+  const [showSachal, setShowSachal] = useState(false);
+
+  const pageStyle = {
+    minHeight: "100vh",
+    padding: "22px 14px",
+    background: "linear-gradient(180deg,#ecfdf5 0%,#f8fafc 100%)",
+    color: "#075e45",
+  } as const;
+
+  const cardStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "14px 12px",
+    minHeight: "76px",
+    border: "1px solid #bbf7d0",
+    borderRadius: "15px",
+    background: "#f0fdf4",
+    color: "#075e45",
+    textDecoration: "none",
+    cursor: "pointer",
+  } as const;
+
   return (
-    <main
-      dir="rtl"
-      style={{
-        minHeight: "100vh",
-        padding: "22px 14px",
-        background: "linear-gradient(180deg,#ecfdf5 0%,#f8fafc 100%)",
-        fontFamily: "inherit",
-        color: "#075e45",
-      }}
-    >
+    <main dir="rtl" style={pageStyle}>
       <div
         style={{
           maxWidth: "700px",
@@ -125,12 +142,16 @@ export default function BooksLibraryPage() {
         }}
       >
         <header style={{ textAlign: "center", marginBottom: "24px" }}>
-          <div style={{ fontSize: "48px" }}>📚</div>
+          <div style={{ fontSize: "48px" }}>
+            {showSachal ? "📖" : "📚"}
+          </div>
           <h1 style={{ fontSize: "27px", margin: "8px 0" }}>
-            سنڌي ڪتابن جي لائبريري
+            {showSachal ? "سچل سرمست جو رسالو" : "سنڌي ڪتابن جي لائبريري"}
           </h1>
           <p style={{ color: "#64748b", lineHeight: 1.9, margin: 0 }}>
-            سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو
+            {showSachal
+              ? "پنهنجي پسند جي ڪافي، بيت يا تشريح چونڊيو"
+              : "سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو"}
           </p>
         </header>
 
@@ -145,82 +166,140 @@ export default function BooksLibraryPage() {
             fontSize: "17px",
           }}
         >
-          📖 پنهنجي پسند جو ڪتاب چونڊيو
+          {showSachal
+            ? "🎼 سچل سائينءَ جي ڪلام جا حصا"
+            : "📖 پنهنجي پسند جو ڪتاب چونڊيو"}
         </div>
 
         <div style={{ display: "grid", gap: "12px" }}>
-          {books.map((book, index) => (
-            <a
-              key={book.title}
-              href={book.ready ? book.href : undefined}
-              target={book.ready ? "_blank" : undefined}
-              rel={book.ready ? "noopener noreferrer" : undefined}
-              onClick={(event) => {
-                if (!book.ready) event.preventDefault();
-              }}
-              aria-disabled={!book.ready}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                padding: "14px 12px",
-                minHeight: "76px",
-                border: "1px solid #bbf7d0",
-                borderRadius: "15px",
-                background: book.ready ? "#f0fdf4" : "#fff",
-                color: "#075e45",
-                textDecoration: "none",
-                cursor: book.ready ? "pointer" : "default",
-                opacity: book.ready ? 1 : 0.85,
-              }}
-            >
-              <span style={{ fontSize: "28px", flexShrink: 0 }}>
-                {book.icon}
-              </span>
+          {(showSachal ? sachalSections : books).map((item, index) => {
+            const isSachalBook = "type" in item && item.type === "sachal";
 
-              <span style={{ flex: 1 }}>
-                <strong style={{ display: "block", fontSize: "16px" }}>
-                  {index + 1}. {book.title}
-                </strong>
+            const content = (
+              <>
+                <span style={{ fontSize: "28px", flexShrink: 0 }}>
+                  {item.icon}
+                </span>
+                <span style={{ flex: 1 }}>
+                  <strong style={{ display: "block", fontSize: "16px" }}>
+                    {index + 1}. {item.title}
+                  </strong>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "12px",
+                      lineHeight: 1.8,
+                      color: "#64748b",
+                      marginTop: "4px",
+                    }}
+                  >
+                    {item.description}
+                  </span>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginTop: "6px",
+                      fontSize: "11px",
+                      color: "#15803d",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    پڙهڻ لاءِ کوليو
+                  </span>
+                </span>
+                <span style={{ fontSize: "20px", flexShrink: 0 }}>❮</span>
+              </>
+            );
 
-                <span
+            if (showSachal) {
+              return (
+                <a
+                  key={item.title}
+                  href={"href" in item ? item.href : "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={cardStyle}
+                >
+                  {content}
+                </a>
+              );
+            }
+
+            if (isSachalBook) {
+              return (
+                <button
+                  key={item.title}
+                  type="button"
+                  onClick={() => setShowSachal(true)}
                   style={{
-                    display: "block",
-                    fontSize: "12px",
-                    lineHeight: 1.8,
-                    color: "#64748b",
-                    marginTop: "4px",
+                    ...cardStyle,
+                    width: "100%",
+                    textAlign: "right",
+                    fontFamily: "inherit",
+                    fontSize: "inherit",
                   }}
                 >
-                  {book.description}
-                </span>
+                  {content}
+                </button>
+              );
+            }
 
-                <span
-                  style={{
-                    display: "inline-block",
-                    marginTop: "6px",
-                    fontSize: "11px",
-                    color: book.ready ? "#15803d" : "#b45309",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {book.ready ? "پڙهڻ لاءِ کوليو" : "جلد اچي رهيو آهي"}
-                </span>
-              </span>
-
-              <span style={{ fontSize: "20px", flexShrink: 0 }}>
-                {book.ready ? "❮" : "🔒"}
-              </span>
-            </a>
-          ))}
+            return (
+              <a
+                key={item.title}
+                href={"href" in item ? item.href : undefined}
+                onClick={(event) => {
+                  if (!("ready" in item) || !item.ready) {
+                    event.preventDefault();
+                  }
+                }}
+                aria-disabled={"ready" in item ? !item.ready : true}
+                style={{
+                  ...cardStyle,
+                  background:
+                    "ready" in item && item.ready ? "#f0fdf4" : "#fff",
+                  opacity:
+                    "ready" in item && item.ready ? 1 : 0.75,
+                  cursor:
+                    "ready" in item && item.ready ? "pointer" : "default",
+                }}
+              >
+                {content}
+              </a>
+            );
+          })}
         </div>
+
+        {showSachal && (
+          <button
+            type="button"
+            onClick={() => setShowSachal(false)}
+            style={{
+              display: "block",
+              width: "100%",
+              textAlign: "center",
+              marginTop: "20px",
+              padding: "14px",
+              borderRadius: "14px",
+              border: "1px solid #bbf7d0",
+              background: "#ecfdf5",
+              color: "#075e45",
+              fontFamily: "inherit",
+              fontSize: "15px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            ❮ واپس ڪتابن جي فهرست ڏانهن
+          </button>
+        )}
 
         <a
           href="/"
           style={{
             display: "block",
             textAlign: "center",
-            marginTop: "24px",
+            marginTop: "16px",
             padding: "14px",
             borderRadius: "14px",
             background: "#075e45",
