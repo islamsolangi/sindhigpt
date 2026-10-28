@@ -10,6 +10,36 @@ const sachalSections = [
     icon: "📖",
     href: "/shah-jo-risalo-with-meaning.pdf",
   },
+    {
+    title: "سچل جو رسالو - عثمان علي انصاري",
+    description: "سچل سرمست جو مڪمل رسالو - PDF",
+    icon: "📖",
+    href: "/Sachal-jo-risalo.pdf",
+  },
+  {
+    title: "سامي جا سلوڪ",
+    description: "سامي جا سلوڪ تشريح سان - PDF",
+    icon: "📜",
+    href: "/Sammi-ja-sulook.pdf",
+  },
+  {
+    title: "لهر لهر دريا - استاد بخاري",
+    description: "استاد بخاري جو مشهور شاعري مجموعو",
+    icon: "🌊",
+    href: "/Lahar-lahar-darya.pdf",
+  },
+  {
+    title: "سنڌي گرامر - ارنيست ٽرمپ",
+    description: "سنڌي ٻولي جو گرامر - PDF",
+    icon: "📝",
+    href: "/Sindhi-grammar.pdf",
+  },
+  {
+    title: "پهاڪا چوڻيون - سنڌي پهاڪا",
+    description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو",
+    icon: "💬",
+    href: "/Pahaka-chawaniyon.pdf",
+  },
   {
     title: "سچل سرمست جون ڪافيون",
     description: "15 مشهور ڪافيون ۽ سنڌي تشريح",
