@@ -329,6 +329,12 @@ export default function BooksLibraryPage() {
             ❮ واپس ڪتابن جي فهرست ڏانهن
           </button>
         )}
+        {/* Blogger - AdSense Loop - Line 332 */}
+        <div style={{ marginTop: "32px", padding: "20px", borderRadius: "16px", border: "2px dashed rgba(13,92,54,0.2)", background: "linear-gradient(to bottom right, #f0faf4, white)", textAlign: "center" }}>
+          <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#0d5c36", marginBottom: "8px" }}>📝 وڌيڪ سنڌي ڪتاب - Islam Solangi Blog</h3>
+          <p style={{ color: "#666", marginBottom: "12px", fontSize: "13px" }}>سنڌي ادب، تاريخ ۽ ثقافت تي تفصيلي مضمون پڙهو</p>
+          <a href="https://islamsolangi786.blogspot.com/" target="_blank" rel="dofollow" style={{ display: "inline-block", background: "white", border: "1px solid #0d5c36", color: "#0d5c36", padding: "10px 22px", borderRadius: "24px", fontWeight: "bold", textDecoration: "none" }}>🌐 islamsolangi786.blogspot.com وزٽ ڪريو</a>
+        </div>
 
         <a
           href="/"
