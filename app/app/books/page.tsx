@@ -1,44 +1,14 @@
-
 "use client";
 
 import { useState } from "react";
 
+// اندر سچل جو رسالو - صرف سچل جا 6 ڪتاب - شاهه، سامي، بخاري هتان ڪڍي ڇڏيا
 const sachalSections = [
   {
-    title: "شاهه جو رسالو معنيٰ سان PDF",
-    description: "مڪمل شاهه جو رسالو سنڌي معنيٰ ۽ تشريح سان PDF ڊائونلوڊ - 13MB",
-    icon: "📖",
-    href: "/shah-jo-risalo-with-meaning.pdf",
-  },
-    {
     title: "سچل جو رسالو - عثمان علي انصاري",
     description: "سچل سرمست جو مڪمل رسالو - PDF",
     icon: "📖",
     href: "/Sachal-jo-risalo.pdf",
-  },
-  {
-    title: "سامي جا سلوڪ",
-    description: "سامي جا سلوڪ تشريح سان - PDF",
-    icon: "📜",
-    href: "/Sammi-ja-sulook.pdf",
-  },
-  {
-    title: "لهر لهر دريا - استاد بخاري",
-    description: "استاد بخاري جو مشهور شاعري مجموعو",
-    icon: "🌊",
-    href: "/Lahar-lahar-darya.pdf",
-  },
-  {
-    title: "سنڌي گرامر - ارنيست ٽرمپ",
-    description: "سنڌي ٻولي جو گرامر - PDF",
-    icon: "📝",
-    href: "/Sindhi-grammar.pdf",
-  },
-  {
-    title: "پهاڪا چوڻيون - سنڌي پهاڪا",
-    description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو",
-    icon: "💬",
-    href: "/Pahaka-chawaniyon.pdf",
   },
   {
     title: "سچل سرمست جون ڪافيون",
@@ -72,10 +42,11 @@ const sachalSections = [
   },
 ];
 
+// Main Library - هاڻي سڀ ڪتاب هتي آيا - شاهه، سامي، بخاري، گرامر، پهاڪا
 const books = [
   {
     title: "شاهه جو رسالو",
-    description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
+    description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام + 13MB معنيٰ وارو PDF",
     icon: "📜",
     category: "ڪلاسيڪي شاعري",
     href: "/app/app/books",
@@ -83,7 +54,7 @@ const books = [
   },
   {
     title: "سچل سرمست جو رسالو",
-    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا حصا",
+    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا 6 حصا",
     icon: "📖",
     category: "صوفيانه ادب",
     type: "sachal",
@@ -91,10 +62,43 @@ const books = [
   },
   {
     title: "ساميءَ جا سلوڪ",
-    description: "ساميءَ جي فڪر ۽ دانائيءَ جا موتي",
+    description: "سامي جا سلوڪ تشريح سان - PDF",
     icon: "🪔",
     category: "صوفيانه ادب",
-    ready: false,
+    href: "/Sammi-ja-sulook.pdf",
+    ready: true,
+  },
+  {
+    title: "لهر لهر دريا - استاد بخاري",
+    description: "استاد بخاري جو مشهور شاعري مجموعو - PDF",
+    icon: "🌊",
+    category: "شاعري",
+    href: "/Lahar-lahar-darya.pdf",
+    ready: true,
+  },
+  {
+    title: "سنڌي گرامر - ارنيست ٽرمپ",
+    description: "سنڌي ٻولي جو گرامر - PDF",
+    icon: "📝",
+    category: "تعليم",
+    href: "/Sindhi-grammar.pdf",
+    ready: true,
+  },
+  {
+    title: "پهاڪا چوڻيون - سنڌي پهاڪا",
+    description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو - PDF",
+    icon: "💬",
+    category: "ٻولي ۽ ثقافت",
+    href: "/Pahaka-chawaniyon.pdf",
+    ready: true,
+  },
+  {
+    title: "شاهه جو رسالو معنيٰ سان PDF",
+    description: "مڪمل شاهه جو رسالو سنڌي معنيٰ ۽ تشريح سان - 13MB",
+    icon: "📖",
+    category: "ڪلاسيڪي شاعري",
+    href: "/shah-jo-risalo-with-meaning.pdf",
+    ready: true,
   },
   {
     title: "سنڌي لوڪ ڪهاڻيون",
@@ -108,34 +112,6 @@ const books = [
     description: "سنڌ جي شاعرن جو چونڊ ڪلام",
     icon: "✍️",
     category: "شاعري",
-    ready: false,
-  },
-  {
-    title: "سنڌي ناول",
-    description: "سنڌي ادب جا ناول",
-    icon: "📚",
-    category: "ناول",
-    ready: false,
-  },
-  {
-    title: "سنڌي ڪهاڻيون",
-    description: "سنڌي ليکڪن جون ڪهاڻيون",
-    icon: "📘",
-    category: "ڪهاڻي",
-    ready: false,
-  },
-  {
-    title: "سنڌي ٻولي ۽ گرامر",
-    description: "سنڌي لکڻ، پڙهڻ ۽ ٻولي سکڻ لاءِ",
-    icon: "🔤",
-    category: "تعليم",
-    ready: false,
-  },
-  {
-    title: "سنڌي پهاڪا ۽ چوڻيون",
-    description: "سنڌي ٻوليءَ جا پهاڪا ۽ محاورا",
-    icon: "💎",
-    category: "ٻولي ۽ ثقافت",
     ready: false,
   },
 ];
@@ -178,70 +154,29 @@ export default function BooksLibraryPage() {
         }}
       >
         <header style={{ textAlign: "center", marginBottom: "24px" }}>
-          <div style={{ fontSize: "48px" }}>
-            {showSachal ? "📖" : "📚"}
-          </div>
+          <div style={{ fontSize: "48px" }}>{showSachal ? "📖" : "📚"}</div>
           <h1 style={{ fontSize: "27px", margin: "8px 0" }}>
             {showSachal ? "سچل سرمست جو رسالو" : "سنڌي ڪتابن جي لائبريري"}
           </h1>
           <p style={{ color: "#64748b", lineHeight: 1.9, margin: 0 }}>
-            {showSachal
-              ? "پنهنجي پسند جي ڪافي، بيت يا تشريح چونڊيو"
-              : "سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو"}
+            {showSachal ? "پنهنجي پسند جي ڪافي، بيت يا تشريح چونڊيو" : "سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو - 8 ڪتاب"}
           </p>
         </header>
 
-        <div
-          style={{
-            background: "#075e45",
-            color: "#fff",
-            borderRadius: "12px",
-            padding: "13px 15px",
-            marginBottom: "15px",
-            fontWeight: "bold",
-            fontSize: "17px",
-          }}
-        >
-          {showSachal
-            ? "🎼 سچل سائينءَ جي ڪلام جا حصا"
-            : "📖 پنهنجي پسند جو ڪتاب چونڊيو"}
+        <div style={{ background: "#075e45", color: "#fff", borderRadius: "12px", padding: "13px 15px", marginBottom: "15px", fontWeight: "bold", fontSize: "17px" }}>
+          {showSachal ? "🎼 سچل سائينءَ جي ڪلام جا 6 حصا" : "📖 پنهنجي پسند جو ڪتاب چونڊيو"}
         </div>
 
         <div style={{ display: "grid", gap: "12px" }}>
           {(showSachal ? sachalSections : books).map((item, index) => {
             const isSachalBook = "type" in item && item.type === "sachal";
-
             const content = (
               <>
-                <span style={{ fontSize: "28px", flexShrink: 0 }}>
-                  {item.icon}
-                </span>
+                <span style={{ fontSize: "28px", flexShrink: 0 }}>{item.icon}</span>
                 <span style={{ flex: 1 }}>
-                  <strong style={{ display: "block", fontSize: "16px" }}>
-                    {index + 1}. {item.title}
-                  </strong>
-                  <span
-                    style={{
-                      display: "block",
-                      fontSize: "12px",
-                      lineHeight: 1.8,
-                      color: "#64748b",
-                      marginTop: "4px",
-                    }}
-                  >
-                    {item.description}
-                  </span>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      marginTop: "6px",
-                      fontSize: "11px",
-                      color: "#15803d",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    پڙهڻ لاءِ کوليو
-                  </span>
+                  <strong style={{ display: "block", fontSize: "16px" }}>{index + 1}. {item.title}</strong>
+                  <span style={{ display: "block", fontSize: "12px", lineHeight: 1.8, color: "#64748b", marginTop: "4px" }}>{item.description}</span>
+                  <span style={{ display: "inline-block", marginTop: "6px", fontSize: "11px", color: "#15803d", fontWeight: "bold" }}>پڙهڻ لاءِ کوليو</span>
                 </span>
                 <span style={{ fontSize: "20px", flexShrink: 0 }}>❮</span>
               </>
@@ -249,13 +184,7 @@ export default function BooksLibraryPage() {
 
             if (showSachal) {
               return (
-                <a
-                  key={item.title}
-                  href={"href" in item ? item.href : "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={cardStyle}
-                >
+                <a key={item.title} href={"href" in item ? item.href : "#"} target="_blank" rel="noopener noreferrer" style={cardStyle}>
                   {content}
                 </a>
               );
@@ -263,18 +192,7 @@ export default function BooksLibraryPage() {
 
             if (isSachalBook) {
               return (
-                <button
-                  key={item.title}
-                  type="button"
-                  onClick={() => setShowSachal(true)}
-                  style={{
-                    ...cardStyle,
-                    width: "100%",
-                    textAlign: "right",
-                    fontFamily: "inherit",
-                    fontSize: "inherit",
-                  }}
-                >
+                <button key={item.title} type="button" onClick={() => setShowSachal(true)} style={{ ...cardStyle, width: "100%", textAlign: "right", fontFamily: "inherit", fontSize: "inherit" }}>
                   {content}
                 </button>
               );
@@ -284,21 +202,9 @@ export default function BooksLibraryPage() {
               <a
                 key={item.title}
                 href={"href" in item ? item.href : undefined}
-                onClick={(event) => {
-                  if (!("ready" in item) || !item.ready) {
-                    event.preventDefault();
-                  }
-                }}
-                aria-disabled={"ready" in item ? !item.ready : true}
-                style={{
-                  ...cardStyle,
-                  background:
-                    "ready" in item && item.ready ? "#f0fdf4" : "#fff",
-                  opacity:
-                    "ready" in item && item.ready ? 1 : 0.75,
-                  cursor:
-                    "ready" in item && item.ready ? "pointer" : "default",
-                }}
+                target={item.ready ? "_blank" : undefined}
+                onClick={(event) => { if (!("ready" in item) || !item.ready) { event.preventDefault(); } }}
+                style={{ ...cardStyle, background: "ready" in item && item.ready ? "#f0fdf4" : "#fff", opacity: "ready" in item && item.ready ? 1 : 0.6, cursor: "ready" in item && item.ready ? "pointer" : "default" }}
               >
                 {content}
               </a>
@@ -307,62 +213,18 @@ export default function BooksLibraryPage() {
         </div>
 
         {showSachal && (
-          <button
-            type="button"
-            onClick={() => setShowSachal(false)}
-            style={{
-              display: "block",
-              width: "100%",
-              textAlign: "center",
-              marginTop: "20px",
-              padding: "14px",
-              borderRadius: "14px",
-              border: "1px solid #bbf7d0",
-              background: "#ecfdf5",
-              color: "#075e45",
-              fontFamily: "inherit",
-              fontSize: "15px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
-          >
+          <button type="button" onClick={() => setShowSachal(false)} style={{ display: "block", width: "100%", textAlign: "center", marginTop: "20px", padding: "14px", borderRadius: "14px", border: "1px solid #bbf7d0", background: "#ecfdf5", color: "#075e45", fontFamily: "inherit", fontSize: "15px", fontWeight: "bold", cursor: "pointer" }}>
             ❮ واپس ڪتابن جي فهرست ڏانهن
           </button>
         )}
-        {/* Blogger - AdSense Loop - Line 332 */}
+
         <div style={{ marginTop: "32px", padding: "20px", borderRadius: "16px", border: "2px dashed rgba(13,92,54,0.2)", background: "linear-gradient(to bottom right, #f0faf4, white)", textAlign: "center" }}>
           <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#0d5c36", marginBottom: "8px" }}>📝 وڌيڪ سنڌي ڪتاب - Islam Solangi Blog</h3>
           <p style={{ color: "#666", marginBottom: "12px", fontSize: "13px" }}>سنڌي ادب، تاريخ ۽ ثقافت تي تفصيلي مضمون پڙهو</p>
-          <a href="https://islamsolangi786.blogspot.com/" target="_blank" rel="dofollow" style={{ display: "inline-block", background: "white", border: "1px solid #0d5c36", color: "#0d5c36", padding: "10px 22px", borderRadius: "24px", fontWeight: "bold", textDecoration: "none" }}>🌐 islamsolangi786.blogspot.com وزٽ ڪريو</a>
+          <a href="https://islamsolangi786.blogspot.com/" target="_blank" rel="dofollow" style={{ display: "inline-block", background: "white", border: "1px solid #0d5c36", color: "#0d5c36", padding: "10px 22px", borderRadius: "24px", fontWeight: "bold", textDecoration: "none" }}>🌐 Blog وزٽ ڪريو</a>
         </div>
 
-        <a
-          href="/"
-          style={{
-            display: "block",
-            textAlign: "center",
-            marginTop: "16px",
-            padding: "14px",
-            borderRadius: "14px",
-            background: "#075e45",
-            color: "#fff",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
-          🏠 واپس سنڌي GPT ڏانهن
-        </a>
-
-        <p
-          style={{
-            textAlign: "center",
-            color: "#64748b",
-            fontSize: "12px",
-            marginTop: "18px",
-          }}
-        >
-          سنڌي ادب محفوظ ڪريو، سنڌي ٻوليءَ کي وڌايو
-        </p>
+        <a href="/" style={{ display: "block", textAlign: "center", marginTop: "16px", padding: "14px", borderRadius: "14px", background: "#075e45", color: "#fff", textDecoration: "none", fontWeight: "bold" }}>🏠 واپس سنڌي GPT ڏانهن</a>
       </div>
     </main>
   );
