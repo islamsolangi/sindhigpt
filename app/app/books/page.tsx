@@ -5,6 +5,12 @@ import { useState } from "react";
 
 const sachalSections = [
   {
+    title: "شاهه جو رسالو معنيٰ سان PDF",
+    description: "مڪمل شاهه جو رسالو سنڌي معنيٰ ۽ تشريح سان PDF ڊائونلوڊ - 13MB",
+    icon: "📖",
+    href: "/shah-jo-risalo-with-meaning.pdf",
+  },
+  {
     title: "سچل سرمست جون ڪافيون",
     description: "15 مشهور ڪافيون ۽ سنڌي تشريح",
     icon: "🎼",
