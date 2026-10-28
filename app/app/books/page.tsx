@@ -59,7 +59,7 @@ const books = [
     title: "ساميءَ جا سلوڪ",
     description: "سامي جا سلوڪ تشريح سان - Blogger تي",
     icon: "🪔",
-    href: "https://islamsolangi786.blogspot.com/search?q=سامي+جا+سلوڪ",
+        href: "https://islamsolangi786.blogspot.com/2026/10/sami-ja-salook-mukamal-kitab-sindhi-pdf-tashreeh.html",
     ready: true,
   },
   {
