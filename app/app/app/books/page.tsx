@@ -1,7 +1,11 @@
-
 "use client";
 
 const surs = [
+  {
+    name: "📖 شاهه جو رسالو مڪمل معنيٰ سان PDF - 13MB",
+    url: "/shah-jo-risalo-with-meaning.pdf",
+    isPdf: true,
+  },
   {
     name: "سُر سسئي پنهون",
     url: "https://islamsolangi786.blogspot.com/2026/10/blog-post_231.html",
@@ -60,25 +64,10 @@ export default function BooksPage() {
       >
         <div style={{ textAlign: "center", marginBottom: "22px" }}>
           <div style={{ fontSize: "42px" }}>📚</div>
-
-          <h1
-            style={{
-              color: "#075e45",
-              fontSize: "27px",
-              margin: "8px 0",
-            }}
-          >
+          <h1 style={{ color: "#075e45", fontSize: "27px", margin: "8px 0" }}>
             شاهه جو رسالو
           </h1>
-
-          <p
-            style={{
-              color: "#475569",
-              lineHeight: 1.9,
-              fontSize: "15px",
-              margin: 0,
-            }}
-          >
+          <p style={{ color: "#475569", lineHeight: 1.9, fontSize: "15px", margin: 0 }}>
             حضرت شاهه عبداللطيف ڀٽائيءَ جي رسالي جا سُر پڙهڻ لاءِ چونڊيو.
           </p>
         </div>
@@ -90,16 +79,15 @@ export default function BooksPage() {
               href={sur.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${sur.name} پڙهو`}
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "12px",
                 padding: "14px",
-                border: "1px solid #bbf7d0",
+                border: sur.isPdf ? "2px solid #075e45" : "1px solid #bbf7d0",
                 borderRadius: "14px",
-                background: "#f8fffb",
-                color: "#075e45",
+                background: sur.isPdf ? "#075e45" : "#f8fffb",
+                color: sur.isPdf ? "white" : "#075e45",
                 textDecoration: "none",
                 fontSize: "17px",
                 fontWeight: "bold",
@@ -108,8 +96,8 @@ export default function BooksPage() {
             >
               <span
                 style={{
-                  background: "#075e45",
-                  color: "white",
+                  background: sur.isPdf ? "white" : "#075e45",
+                  color: sur.isPdf ? "#075e45" : "white",
                   width: "38px",
                   height: "38px",
                   borderRadius: "50%",
@@ -120,21 +108,48 @@ export default function BooksPage() {
                   fontSize: "15px",
                 }}
               >
-                {index + 1}
+                {sur.isPdf ? "📖" : index}
               </span>
-
               <span style={{ flex: 1 }}>{sur.name}</span>
-
-              <span
-                style={{
-                  color: "#16a34a",
-                  fontSize: "20px",
-                }}
-              >
-                ❮
-              </span>
+              <span style={{ color: sur.isPdf ? "white" : "#16a34a", fontSize: "20px" }}>❮</span>
             </a>
           ))}
+        </div>
+
+        {/* AdSense Loop - Blogger */}
+        <div
+          style={{
+            marginTop: "28px",
+            padding: "18px",
+            borderRadius: "16px",
+            border: "2px dashed #bbf7d0",
+            background: "#f0fdf4",
+            textAlign: "center",
+          }}
+        >
+          <h3 style={{ color: "#075e45", fontSize: "16px", margin: "0 0 8px 0" }}>
+            📝 وڌيڪ سنڌي ڪتاب - Islam Solangi Blog
+          </h3>
+          <p style={{ color: "#64748b", fontSize: "13px", margin: "0 0 10px 0" }}>
+            سنڌي ادب، تاريخ ۽ ثقافت جا تفصيلي مضمون
+          </p>
+          <a
+            href="https://islamsolangi786.blogspot.com/"
+            target="_blank"
+            rel="dofollow"
+            style={{
+              display: "inline-block",
+              background: "white",
+              border: "1px solid #075e45",
+              color: "#075e45",
+              padding: "10px 20px",
+              borderRadius: "24px",
+              fontWeight: "bold",
+              textDecoration: "none",
+            }}
+          >
+            🌐 Blog وزٽ ڪريو
+          </a>
         </div>
 
         <a
@@ -142,7 +157,7 @@ export default function BooksPage() {
           style={{
             display: "block",
             textAlign: "center",
-            marginTop: "24px",
+            marginTop: "20px",
             padding: "14px",
             borderRadius: "14px",
             background: "#075e45",
@@ -155,15 +170,7 @@ export default function BooksPage() {
           🏠 واپس سنڌي GPT ڏانهن
         </a>
 
-        <p
-          style={{
-            textAlign: "center",
-            color: "#64748b",
-            fontSize: "12px",
-            marginTop: "18px",
-            marginBottom: 0,
-          }}
-        >
+        <p style={{ textAlign: "center", color: "#64748b", fontSize: "12px", marginTop: "18px", marginBottom: 0 }}>
           سنڌي ٻولي، ادب ۽ ثقافت سان محبت
         </p>
       </div>
