@@ -12,17 +12,43 @@ const books = [
   },
   {
     title: "سچل سرمست جي ڪافي",
-    description: "سچل سائينءَ جي صوفيانه ڪافين جو خزانو",
+    description: "سچل سائينءَ جون ڪافيون ۽ آسان سنڌي معنيٰ",
     icon: "🎼",
     category: "صوفيانه شاعري",
-    ready: false,
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-kafis-tashreeh-15-famous-sindhi-kafi.html",
+    ready: true,
   },
   {
-    title: "سچل سرمست جو رسالو",
-    description: "سچل سائينءَ جو سنڌي ۽ سرائڪي ڪلام",
+    title: "سچل سرمست: جي هون پڇوڙي",
+    description: "ڪافي ۽ ان جي تشريح",
+    icon: "💚",
+    category: "صوفيانه شاعري",
+    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-ji-hon-pachori.html",
+    ready: true,
+  },
+  {
+    title: "سچل سرمست جون ڪافيون ۽ سنڌي معنيٰ",
+    description: "ڪافين جو مجموعو ۽ سنڌي تشريح",
     icon: "📖",
     category: "ڪلاسيڪي ادب",
-    ready: false,
+    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-kafi-sindhi-meaning.html",
+    ready: true,
+  },
+  {
+    title: "سچل سرمست جا 40 بيت",
+    description: "بيت، تشريح ۽ وحدت الوجود جو فڪر",
+    icon: "✍️",
+    category: "سنڌي شاعري",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-bait-40-tashreeh-wahdat-ul-wajud-sindhi.html",
+    ready: true,
+  },
+  {
+    title: "سچل سرمست جا 100 بيت",
+    description: "سچل سائينءَ جا بيت ۽ انهن جي معنيٰ",
+    icon: "📚",
+    category: "صوفيانه ادب",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-100-baith-with-meaning.html",
+    ready: true,
   },
   {
     title: "ساميءَ جا سلوڪ",
@@ -127,6 +153,8 @@ export default function BooksLibraryPage() {
             <a
               key={book.title}
               href={book.ready ? book.href : undefined}
+              target={book.ready ? "_blank" : undefined}
+              rel={book.ready ? "noopener noreferrer" : undefined}
               onClick={(event) => {
                 if (!book.ready) event.preventDefault();
               }}
