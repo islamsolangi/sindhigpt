@@ -66,14 +66,14 @@ const books = [
     title: "لهر لهر دريا - استاد بخاري",
     description: "استاد بخاري جو مشهور مجموعو - Blogger تي",
     icon: "🌊",
-    href: "https://islamsolangi786.blogspot.com/search?q=لهر+لهر+دريا",
+    href: "https://islamsolangi786.blogspot.com/2026/10/lehar-lehar-darya-ustad-bukhari-online.html",
     ready: true,
   },
   {
     title: "سنڌي گرامر - ارنيست ٽرمپ",
     description: "سنڌي ٻولي جو گرامر - Blogger تي",
     icon: "📝",
-    href: "https://islamsolangi786.blogspot.com/search?q=سنڌي+گرامر",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sindhi-grammar-ernest-trump-online.html",
     ready: true,
   },
   {
@@ -87,7 +87,7 @@ const books = [
     title: "شاهه جو رسالو معنيٰ سان",
     description: "مڪمل شاهه جو رسالو معنيٰ ۽ تشريح سان - Blogger تي",
     icon: "📖",
-    href: "https://islamsolangi786.blogspot.com/search?q=شاهه+جو+رسالو+معني",
+    href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
     ready: true,
   },
   {
