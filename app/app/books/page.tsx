@@ -45,7 +45,7 @@ const books = [
     title: "شاهه جو رسالو",
     description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام - سڀ سُر Blogger تي",
     icon: "📜",
-    href: "https://islamsolangi786.blogspot.com/2026/10/blog-post.html",
+    href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
     ready: true,
   },
   {
@@ -59,7 +59,7 @@ const books = [
     title: "ساميءَ جا سلوڪ",
     description: "سامي جا سلوڪ تشريح سان - Blogger تي",
     icon: "🪔",
-        href: "https://islamsolangi786.blogspot.com/2026/10/sami-ja-salook-mukamal-kitab-sindhi-pdf-tashreeh.html",
+    href: "https://islamsolangi786.blogspot.com/2026/10/sami-ja-salook-mukamal-kitab-sindhi-pdf-tashreeh.html",
     ready: true,
   },
   {
@@ -94,7 +94,7 @@ const books = [
     title: "سنڌي لوڪ ڪهاڻيون",
     description: "سسئي پنهون، عمر مارئي، مومل راڻو - Blogger تي",
     icon: "🏺",
-    href: "https://islamsolangi786.blogspot.com/search?q=لوڪ+ڪهاڻيون",
+    href: "https://islamsolangi786.blogspot.com/search/label/لوڪ%20ڪهاڻيون",
     ready: true,
   },
 ];
