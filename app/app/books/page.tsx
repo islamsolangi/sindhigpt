@@ -7,6 +7,12 @@ const books = [
   icon: "📜",
   href: "/app/books/chach-nama",
 },
+    {
+  title: "تحفة الڪرام - تاريخ سنڌ",
+  description: "مير علي شير قانع ٺٽوي - سنڌ جي مڪمل تاريخ، بزرگن ۽ شهرن جو احوال",
+  icon: "📖",
+  href: "/app/books/tuhfat-ul-kiram",
+},
 {
 title: "شاهه جو رسالو",
 description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
