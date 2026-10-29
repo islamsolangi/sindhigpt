@@ -12,24 +12,6 @@ const sachalSections = [
     pdf: "/Sachal-jo-risalo.pdf",
   },
   {
-    title: "سچل سرمست جون ڪافيون",
-    description: "15 مشهور ڪافيون ۽ سنڌي تشريح",
-    icon: "🎼",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-kafis-tashreeh-15-famous-sindhi-kafi.html",
-  },
-  {
-    title: "سچل جي هون پڇوڙي",
-    description: "ڪافي ۽ ان جي تشريح",
-    icon: "💚",
-    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-ji-hon-pachori.html",
-  },
-  {
-    title: "ڪافيون ۽ سنڌي معنيٰ",
-    description: "ڪافين جو مجموعو ۽ آسان سنڌي معنيٰ",
-    icon: "📖",
-    href: "https://islamsolangi786.blogspot.com/2026/10/suchal-sarmast-kafi-sindhi-meaning.html",
-  },
-  {
     title: "سچل سرمست جا 40 بيت",
     description: "بيت، تشريح ۽ وحدت الوجود جو فڪر",
     icon: "✍️",
@@ -51,13 +33,7 @@ const books = [
     href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
     ready: true,
   },
-  {
-    title: "سچل سرمست جو رسالو",
-    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا ڇهه حصا",
-    icon: "📖",
-    type: "sachal",
-    ready: true,
-  },
+
   {
     title: "ساميءَ جا سلوڪ",
     description: "سامي جا سلوڪ تشريح سان",
@@ -88,14 +64,6 @@ const books = [
     icon: "💬",
     href: "https://islamsolangi786.blogspot.com/2026/10/pahaka-chooniyan-sindhi-proverbs-online.html",
     pdf: "/Pahaka-chawaniyon.pdf",
-    ready: true,
-  },
-  {
-    title: "شاهه جو رسالو معنيٰ سان",
-    description: "شاهه جو رسالو معنيٰ ۽ تشريح سان",
-    icon: "📖",
-    href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
-    pdf: "/shah-jo-risalo-with-meaning.pdf",
     ready: true,
   },
   {
@@ -149,19 +117,7 @@ export default function BooksLibraryPage() {
             {showSachal ? "📖" : "📚"}
           </div>
 
-          <h1 style={{ fontSize: "27px", margin: "8px 0" }}>
-            {showSachal
-              ? "سچل سرمست جو رسالو"
-              : "سنڌي ڪتابن جي لائبريري"}
-          </h1>
-
-          <p style={{ color: "#64748b", lineHeight: 1.9, margin: 0 }}>
-            {showSachal
-              ? "سچل سائينءَ جي ڪلام جا ڇهه حصا"
-              : "سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو"}
-          </p>
-        </header>
-
+          
         <div
           style={{
             background: "#075e45",
@@ -172,11 +128,6 @@ export default function BooksLibraryPage() {
             fontWeight: "bold",
             fontSize: "17px",
           }}
-        >
-          {showSachal
-            ? "🎼 سچل سائينءَ جا 6 حصا"
-            : "📖 پنهنجي پسند جو ڪتاب چونڊيو"}
-        </div>
 
         <div style={{ display: "grid", gap: "12px" }}>
           {(showSachal ? sachalSections : books).map((item, index) => {
