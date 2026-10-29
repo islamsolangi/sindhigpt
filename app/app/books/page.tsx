@@ -13,6 +13,12 @@ const books = [
   icon: "📖",
   href: "/app/books/tuhfat-ul-kiram",
 },
+   {
+  title: "تاريخ سنڌ - مرزا قليچ بيگ",
+  description: "مرزا قليچ بيگ - سنڌ جي قديم دور کان انگريزن تائين مستند تاريخ",
+  icon: "📜",
+  href: "/app/books/tarikh-sindh-qalich",
+}, 
 {
 title: "شاهه جو رسالو",
 description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
