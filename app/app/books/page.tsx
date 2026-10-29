@@ -19,6 +19,12 @@ const books = [
   icon: "📜",
   href: "/app/books/tarikh-sindh-qalich",
 }, 
+    {
+  title: "محمد بن قاسم - فاتح سنڌ",
+  description: "محمد بن قاسم جي سوانح، سنڌ جي فتح ۽ سندس عدل و انصاف جو داستان",
+  icon: "⚔️",
+  href: "/app/books/muhammad-bin-qasim",
+},
 {
 title: "شاهه جو رسالو",
 description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
