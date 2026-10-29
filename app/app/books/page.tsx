@@ -11,7 +11,7 @@ href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-onlin
 title: "سچل سرمست جو رسالو",
 description: "سچل سرمست جو مڪمل رسالو",
 icon: "📖",
-href: "https://islamsolangi786.blogspot.com/2026/10/sachal-jo-risalo-complete-pdf.html",
+href: "https://islamsolangi786.blogspot.com/2026/10/sachal-jo-risalo-usman-ali-ansari.html",
 },
 {
 title: "ساميءَ جا سلوڪ",
