@@ -11,18 +11,6 @@ const sachalSections = [
     href: "https://islamsolangi786.blogspot.com/2026/10/sachal-jo-risalo-complete-pdf.html",
     pdf: "/Sachal-jo-risalo.pdf",
   },
-  {
-    title: "سچل سرمست جا 40 بيت",
-    description: "بيت، تشريح ۽ وحدت الوجود جو فڪر",
-    icon: "✍️",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-bait-40-tashreeh-wahdat-ul-wajud-sindhi.html",
-  },
-  {
-    title: "سچل سرمست جا 100 بيت",
-    description: "بيت ۽ انهن جي سنڌي معنيٰ",
-    icon: "📚",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sachal-sarmast-100-baith-with-meaning.html",
-  },
 ];
 
 const books = [
