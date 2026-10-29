@@ -1,12 +1,15 @@
+
 "use client";
+
 import { useState } from "react";
 
 const sachalSections = [
   {
     title: "سچل جو رسالو - عثمان علي انصاري",
-    description: "سچل سرمست جو مڪمل رسالو - Blogger تي پڙهو",
+    description: "سچل سرمست جو مڪمل رسالو",
     icon: "📖",
     href: "https://islamsolangi786.blogspot.com/2026/10/sachal-jo-risalo-complete-pdf.html",
+    pdf: "/Sachal-jo-risalo.pdf",
   },
   {
     title: "سچل سرمست جون ڪافيون",
@@ -43,56 +46,61 @@ const sachalSections = [
 const books = [
   {
     title: "شاهه جو رسالو",
-    description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام - سڀ سُر Blogger تي",
+    description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
     icon: "📜",
     href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
     ready: true,
   },
   {
     title: "سچل سرمست جو رسالو",
-    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا 6 حصا - Blogger تي",
+    description: "سچل سائينءَ جي ڪلام، ڪافين ۽ بيتن جا ڇهه حصا",
     icon: "📖",
     type: "sachal",
     ready: true,
   },
   {
     title: "ساميءَ جا سلوڪ",
-    description: "سامي جا سلوڪ تشريح سان - Blogger تي",
+    description: "سامي جا سلوڪ تشريح سان",
     icon: "🪔",
     href: "https://islamsolangi786.blogspot.com/2026/10/sami-ja-salook-mukamal-kitab-sindhi-pdf-tashreeh.html",
+    pdf: "/Sammi-ja-sulook.pdf",
     ready: true,
   },
   {
     title: "لهر لهر دريا - استاد بخاري",
-    description: "استاد بخاري جو مشهور مجموعو - Blogger تي",
+    description: "استاد بخاري جو مشهور مجموعو",
     icon: "🌊",
     href: "https://islamsolangi786.blogspot.com/2026/10/lehar-lehar-darya-ustad-bukhari-online.html",
+    pdf: "/Lahar-lahar-darya.pdf",
     ready: true,
   },
   {
-    title: "سنڌي گرامر - ارنيست ٽرمپ",
-    description: "سنڌي ٻولي جو گرامر - PDF ڪتاب پڙهو",
+    title: "سنڌي گرامر - ارنيسٽ ٽرمپ",
+    description: "سنڌي ٻولي جو گرامر - PDF ڪتاب",
     icon: "📝",
     href: "https://islamsolangi786.blogspot.com/2026/10/sindhi-grammar-ernest-trump-online.html",
+    pdf: "/Sindhi-grammar.pdf",
     ready: true,
   },
   {
-    title: "پهاڪا چوڻيون - سنڌي پهاڪا",
-    description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو - Blogger تي",
+    title: "پهاڪا ۽ چوڻيون",
+    description: "سنڌي پهاڪن ۽ چوڻين جو مجموعو",
     icon: "💬",
     href: "https://islamsolangi786.blogspot.com/2026/10/pahaka-chooniyan-sindhi-proverbs-online.html",
+    pdf: "/Pahaka-chawaniyon.pdf",
     ready: true,
   },
   {
     title: "شاهه جو رسالو معنيٰ سان",
-    description: "مڪمل شاهه جو رسالو معنيٰ ۽ تشريح سان - Blogger تي",
+    description: "شاهه جو رسالو معنيٰ ۽ تشريح سان",
     icon: "📖",
     href: "https://islamsolangi786.blogspot.com/2026/10/shah-jo-risalo-mukamal-online-read.html",
+    pdf: "/shah-jo-risalo-with-meaning.pdf",
     ready: true,
   },
   {
     title: "سنڌي لوڪ ڪهاڻيون",
-    description: "سسئي پنهون، عمر مارئي، مومل راڻو - Blogger تي",
+    description: "سسئي پنهون، عمر مارئي، مومل راڻو",
     icon: "🏺",
     href: "https://islamsolangi786.blogspot.com/search/label/لوڪ%20ڪهاڻيون",
     ready: true,
@@ -147,13 +155,7 @@ export default function BooksLibraryPage() {
               : "سنڌي ڪتابن جي لائبريري"}
           </h1>
 
-          <p
-            style={{
-              color: "#64748b",
-              lineHeight: 1.9,
-              margin: 0,
-            }}
-          >
+          <p style={{ color: "#64748b", lineHeight: 1.9, margin: 0 }}>
             {showSachal
               ? "سچل سائينءَ جي ڪلام جا ڇهه حصا"
               : "سنڌي ٻولي، ادب، شاعري ۽ ثقافت جو خزانو"}
@@ -188,12 +190,7 @@ export default function BooksLibraryPage() {
                 </span>
 
                 <span style={{ flex: 1 }}>
-                  <strong
-                    style={{
-                      display: "block",
-                      fontSize: "16px",
-                    }}
-                  >
+                  <strong style={{ display: "block", fontSize: "16px" }}>
                     {index + 1}. {item.title}
                   </strong>
 
@@ -218,9 +215,7 @@ export default function BooksLibraryPage() {
                       fontWeight: "bold",
                     }}
                   >
-                    {"href" in item && item.href === "/Sindhi-grammar.pdf"
-                      ? "PDF ڪتاب پڙهو ❯"
-                      : "ڪتاب کوليو ❯"}
+                    ڪتاب کوليو ❯
                   </span>
                 </span>
 
