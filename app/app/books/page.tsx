@@ -25,6 +25,12 @@ const books = [
   icon: "⚔️",
   href: "/app/books/muhammad-bin-qasim",
 },
+    {
+  title: "سنڌ جون لوڪ ڪهاڻيون - ست سورميون",
+  description: "سسئي پنهون، عمر مارئي، مومل راڻو، ليلا چنيسر - سنڌ جون 7 امر ڪهاڻيون",
+  icon: "❤️",
+  href: "/app/books/lok-kahaniyan",
+},
 {
 title: "شاهه جو رسالو",
 description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
