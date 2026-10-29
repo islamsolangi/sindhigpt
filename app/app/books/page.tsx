@@ -73,7 +73,7 @@ const books = [
     title: "سنڌي گرامر - ارنيست ٽرمپ",
     description: "سنڌي ٻولي جو گرامر - Blogger تي",
     icon: "📝",
-    href: "https://islamsolangi786.blogspot.com/2026/10/sindhi-grammar-ernest-trump-online.html",
+    href: "https://islamsolangi786.blogspot.com/2026/10/Sindhi-grammar.pdf",-ernest-trump-online.html",
     ready: true,
   },
   {
