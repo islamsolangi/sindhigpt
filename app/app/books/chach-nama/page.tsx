@@ -14,7 +14,9 @@ export default function Page() {
         <li>محمد بن قاسم جي آمد 712ع</li>
         <li>ارور ۽ برهمن آباد جون جنگيون</li>
       </ol>
-      <a href="https://islamsolangi786.blogspot.com/search/label/CHACH%20NAMA" target="_blank"
+      <a href="https://islamsolangi786.blogspot.com/2026/10/chach-nama-sindh-ji-qadeem-tareekh.html" target="_blank" style={{display:'block', background:'#075e45', color:'#fff', padding:'16px', textAlign:'center', borderRadius:'10px', fontWeight:'bold', textDecoration:'none'}}>
+🌐 بلاگر تي مڪمل ڪتاب پڙهو - هتي ڪلڪ ڪريو
+</a>
          style={{display:'block', background:'#075e45', color:'#fff', padding:'16px', textAlign:'center', borderRadius:'10px', textDecoration:'none', fontWeight:'bold', marginTop:'24px'}}>
          🌐 بلاگر تي مڪمل ڪتاب پڙهو - هتي ڪلڪ ڪريو
       </a>
