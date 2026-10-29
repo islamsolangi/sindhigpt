@@ -1,6 +1,12 @@
 "use client";
 
 const books = [
+    {
+  title: "چچ نامو - فتح نامہ سنڌ",
+  description: "سنڌ جي تاريخ جو سڀ کان پراڻو ڪتاب - راجا چچ، ڏاهر ۽ محمد بن قاسم",
+  icon: "📜",
+  href: "/app/books/chach-nama",
+},
 {
 title: "شاهه جو رسالو",
 description: "شاهه عبداللطيف ڀٽائيءَ جو لازوال ڪلام",
