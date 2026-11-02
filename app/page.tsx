@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-    import TasveerManSabak from "../components/TasveerManSabak";
 
 type Msg = { role: "user" | "bot"; text: string };
 
