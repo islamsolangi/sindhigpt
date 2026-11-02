@@ -375,6 +375,10 @@ return (
           </div>
         )}
 
+             <div style={{ padding: "10px" }}>
+        <TasveerManSabak />
+      </div>
+   
         <div
           style={{
             display: "flex",
