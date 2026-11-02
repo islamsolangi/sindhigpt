@@ -1,4 +1,4 @@
-mport { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 
 export async function POST(req: Request) {
@@ -60,14 +60,12 @@ export async function POST(req: Request) {
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash", // يا ضرورت مطابق صحيح ماڊل نالو لکو
+      model: "gemini-2.5-flash",
       contents,
       config: {
         systemInstruction:
-          "You are SindhiGPT. Reply only in Sindhi Arabic script. Give clear, helpful answers. When asked about live events, weather, gold rates or current news, use web search to provide accurate real-time information. Never use tables, |, <br>, or **. If you cannot identify something, say so honestly.",
+          "You are SindhiGPT. Reply only in Sindhi Arabic script. Give clear, helpful answers about uploaded images. If text is visible in an image, help read it. Never use tables, |, <br>, or **. If you cannot identify something, say so honestly.",
         temperature: 0.3,
-        // هيٺيون لائينون لائيو انٽرنيٽ سرچ (Google Search Grounding) فعال ڪنديون
-        tools: [{ googleSearch: {} }],
       },
     });
 
@@ -83,3 +81,6 @@ export async function POST(req: Request) {
           "جواب حاصل ڪرڻ ۾ مسئلو ٿيو. مهرباني ڪري ٻيهر ڪوشش ڪريو.",
       },
       { status: 500 }
+    );
+  }
+}
