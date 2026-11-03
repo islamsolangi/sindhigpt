@@ -18,19 +18,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body style={{ margin: 0, fontFamily: "system-ui, sans-serif" }}>
         {children}
         
-        {/* Monetag 12165486 (304272) - صرف هڪ ڀيرو في سيشن */}
+        {/* Monetag - صرف 1 ڪلاڪ ۾ هڪ ڀيرو */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if (!sessionStorage.getItem('ad_304272_done')) {
-                var s = document.createElement('script');
-                s.src = 'https://quge5.com/88/tag.min.js';
-                s.setAttribute('data-zone', '304272');
-                s.async = true;
-                s.setAttribute('data-cfasync', 'false');
+              (function(){
+                var key='ad_304272_block';
+                var last=localStorage.getItem(key);
+                if(last && Date.now() - parseInt(last) < 3600000){
+                  return;
+                }
+                var s=document.createElement('script');
+                s.src='https://quge5.com/88/tag.min.js';
+                s.setAttribute('data-zone','304272');
+                s.async=true;
+                s.setAttribute('data-cfasync','false');
                 document.body.appendChild(s);
-                sessionStorage.setItem('ad_304272_done', '1');
-              }
+                localStorage.setItem(key, Date.now().toString());
+              })();
             `,
           }}
         />
